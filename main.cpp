@@ -42,8 +42,8 @@ class program {
                      "<html>"
                      "<head>"
                      "<title>Palindromy</title>"
-                     "<body>"
                      "</head>"
+                     "<body>"
                      "[ \n";
 
             for(int i = 0; i < linia.size(); i++)
