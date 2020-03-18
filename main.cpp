@@ -29,7 +29,7 @@ class program {
         plik.open("a.txt", ios::in);
         plik2.open("b.html");
         if(plik.good()) {
-            plik2 << "[ \n";
+
             vector <string> linia;
             while(!plik.eof()) {
                 string tekst;
@@ -38,6 +38,14 @@ class program {
                     continue;
                 linia.push_back(tekst);
             }
+            plik2 <<
+                     "<html>"
+                     "<head>"
+                     "<title>Palindromy</title>"
+                     "<body>"
+                     "</head>"
+                     "[ \n";
+
             for(int i = 0; i < linia.size(); i++)
             {
                 string tekst = linia[i];
@@ -46,28 +54,17 @@ class program {
                 string wynik = ((czy_palindrom(tekst)) ? "TAK" : "NIE");
                 cout << wynik << "\n";
                 char x = '#'-1;
+                plik2 <<
+                         " { \n" << "   " << x << "string" << x << ":" << x << zm << x << "\n"
+                         "   " << x << "palindrom" << x << ":" << x << wynik << x << "\n }";
                 if(i != linia.size()-1)
-                    plik2 <<
-                             "<html>"
-                             "<head>"
-                             "<title>Palindromy</title>"
-                             "<body>"
-                             " { \n" << "   " << x << "string" << x << ":" << x << zm << x << "\n"
-                             "   " << x << "palindrom" << x << ":" << x << wynik << x << "\n }, \n"
-                             "</body>"
-                             "</html>";
-                else
-                    plik2 <<
-                             "<html>"
-                             "<head>"
-                             "<title>Palindromy</title>"
-                             "<body>"
-                             " { \n" << "   " << x << "string" << x << ":" << x << zm << x << "\n"
-                             "   " << x << "palindrom" << x << ":" << x << wynik << x << "\n } \n"
-                             "</body>"
-                             "</html>";
+                    plik2 << ",";
+                plik2 << "\n";
+
             }
-            plik2 << "] \n";
+            plik2 << "] \n"
+                     "</body>"
+                     "</html>";
         }
         plik2.close();
         plik.close();
